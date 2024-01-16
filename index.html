@@ -1,1 +1,42 @@
-<h1>hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Producten en Prijzen</title>
+</head>
+<body>
+  <ul id="productList"></ul>
+
+  <script>
+   fetch('data.txt')
+  .then(response => response.text())
+  .then(data => {
+    const lines = data.split('\n');
+    const productList = document.getElementById('productList');
+
+    // Lees de kopregel om de namen van de kolommen te verkrijgen
+    const headers = lines[0].split(', ');
+
+    // Loop over de rest van de regels (beginnend bij index 1 om de kopregel over te slaan)
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
+      const values = line.split(', ');
+
+      // Maak een nieuw list item aan
+      const listItem = document.createElement('li');
+
+      // Voeg de gegevens toe aan het list item met behulp van de kopnamen
+      for (let j = 0; j < headers.length; j++) {
+        listItem.innerHTML += `<span>${headers[j]}: ${values[j]}</span><br>`;
+      }
+
+      // Voeg het toe aan de lijst op de HTML-pagina
+      productList.appendChild(listItem);
+    }
+  })
+  .catch(error => console.error('Er is een fout opgetreden bij het ophalen van de data:', error));
+
+  </script>
+</body>
+</html>
