@@ -1,6 +1,0 @@
-Category, Active, Company, Brand, Product, Price, Sale Price, URL
-Dierenbenodigdheden, Ja, Pet Store, Royal Canin, Kittenvoer, 15, 12, https://voorbeeld.com/kittenvoer
-Dierenbenodigdheden, Ja, Super Pets, Purina, Volwassen Kattenvoer, 20, 18, https://voorbeeld.com/volwassen-kattenvoer
-Dierenbenodigdheden, Ja, Mega Pets, Hills Science Diet, Senior Kattenvoer, 25, 22, https://voorbeeld.com/senior-kattenvoer
-Dierenbenodigdheden, Ja, Purrfect Supplies, Acme, Premium Kattenvoer, 30, 28, https://voorbeeld.com/premium-kattenvoer
-Dierenbenodigdheden, Ja, Feline Emporium, Fancy Feast, Gemengd Pakket, 40, 35, https://voorbeeld.com/gemengd-pakket

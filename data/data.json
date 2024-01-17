@@ -1,0 +1,53 @@
+[
+    {
+      "Category": "Dierenbenodigdheden",
+      "Active": "Ja",
+      "Company": "Pet Store",
+      "Brand": "Royal Canin",
+      "Product": "Kittenvoer",
+      "Price": 15,
+      "SalePrice": 12,
+      "URL": "https://voorbeeld.com/kittenvoer"
+    },
+    {
+      "Category": "Dierenbenodigdheden",
+      "Active": "Ja",
+      "Company": "Super Pets",
+      "Brand": "Purina",
+      "Product": "Volwassen Kattenvoer",
+      "Price": 20,
+      "SalePrice": 18,
+      "URL": "https://voorbeeld.com/volwassen-kattenvoer"
+    },
+    {
+      "Category": "Dierenbenodigdheden",
+      "Active": "Ja",
+      "Company": "Mega Pets",
+      "Brand": "Hills Science Diet",
+      "Product": "Senior Kattenvoer",
+      "Price": 25,
+      "SalePrice": 22,
+      "URL": "https://voorbeeld.com/senior-kattenvoer"
+    },
+    {
+      "Category": "Dierenbenodigdheden",
+      "Active": "Ja",
+      "Company": "Purrfect Supplies",
+      "Brand": "Acme",
+      "Product": "Premium Kattenvoer",
+      "Price": 30,
+      "SalePrice": 28,
+      "URL": "https://voorbeeld.com/premium-kattenvoer"
+    },
+    {
+      "Category": "Dierenbenodigdheden",
+      "Active": "Ja",
+      "Company": "Feline Emporium",
+      "Brand": "Fancy Feast",
+      "Product": "Gemengd Pakket",
+      "Price": 40,
+      "SalePrice": 35,
+      "URL": "https://voorbeeld.com/gemengd-pakket"
+    }
+  ]
+  

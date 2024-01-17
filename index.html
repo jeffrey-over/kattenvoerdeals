@@ -1,42 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Producten en Prijzen</title>
-</head>
-<body>
-  <ul id="productList"></ul>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Ontdek de Beste Kattenvoer Aanbiedingen - KattenVoerDeals.nl</title>
+		<link rel="stylesheet" href="assets/css/tailwind.css">
+		<link rel="icon" type="image/x-icon" href="assets/image/favicon.ico">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> 
+  
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- Your other scripts -->
+<script type="module" src="assets/js/base.js"></script>
 
-  <script>
-   fetch('data.txt')
-  .then(response => response.text())
-  .then(data => {
-    const lines = data.split('\n');
-    const productList = document.getElementById('productList');
+  </head>
 
-    // Lees de kopregel om de namen van de kolommen te verkrijgen
-    const headers = lines[0].split(', ');
+	<body class="font-body">
 
-    // Loop over de rest van de regels (beginnend bij index 1 om de kopregel over te slaan)
-    for (let i = 1; i < lines.length; i++) {
-      const line = lines[i];
-      const values = line.split(', ');
+		<div id="header"></div>
 
-      // Maak een nieuw list item aan
-      const listItem = document.createElement('li');
 
-      // Voeg de gegevens toe aan het list item met behulp van de kopnamen
-      for (let j = 0; j < headers.length; j++) {
-        listItem.innerHTML += `<span>${headers[j]}: ${values[j]}</span><br>`;
-      }
+		<section class="bg-white">
+			<div class="container max-w-screen-xl mx-auto">
+				<div
+					class="bg-cover bg-no-repeat"
+					style="height:40vw;background-position: center; background-image: url('https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+					<!-- Flex-container voor tekst -->
+					<div class="container mx-auto flex items-center justify-center flex-col text-center text-white h-full">
+						<h1 class="md:text-6xl font-bold mb-4" style="text-shadow: 2px 5px 55px #fff;">Kattenvoer Aanbiedingen</h1>
+						<p class="md:text-2xl mb-8 text-shadow" style="text-shadow: 1px 1px 50px #fff;">Ontdek dagelijks de prijzen!</p>
+					</div>
+				</div>
+			</div>
+			<!-- container.// -->
+		</section>
 
-      // Voeg het toe aan de lijst op de HTML-pagina
-      productList.appendChild(listItem);
-    }
-  })
-  .catch(error => console.error('Er is een fout opgetreden bij het ophalen van de data:', error));
 
-  </script>
-</body>
+		<!-- home section //end -->
+		<!--  section //end -->
+		<section class="bg-white pt-20 pb-20 lg:mb-10">
+			<div class="container max-w-screen-xl mx-auto px-4">
+				<div class="flex flex-col justify-between space-x-20">
+					<div class="text-center mx-auto" style="    max-width: 500px;">
+						<h1 class="font-bold  text-4xl md:text-6xl leading-normal mb-6"> De beste deals voor kattenvoer</h1>
+						<p class="font-light text-md md:text-lg leading-normal mb-8">
+							Ontdek dagelijks de beste aanbiedingen voor hoogwaardig kattenvoer. Bij ons vind je niet alleen de laagste prijzen, maar investeer je ook in de gezondheid van je kat. 
+							We begrijpen dat de voeding van je huisdier essentieel is, daarom bieden we zorgvuldig geselecteerde opties die niet alleen vriendelijk zijn voor je portemonnee, maar ook bevorderlijk zijn voor de vitaliteit en het welzijn van je pluizige vriend.
+						</p>
+						<a href="#aanbiedingen" class="px-6 py-4 bg-blue-500 font-semibold text-white text-lg rounded-xl hover:bg-blue-700 transition ease-in-out duration-500">Bekijk Aanbiedingen</a>
+					</div>
+				</div>
+			</div>
+			<!-- container.// -->
+		</section>
+
+
+		<section class="bg-white pt-10 pb-10 lg:mb-10">
+			<div class="container max-w-screen-xl mx-auto px-4 text-center ">
+				<p class="text-gray-400 font-light text-md md:text-lg leading-normal mb-8">Merken die katten liefhebben</p>
+				<!-- Rij met logos -->
+				<div style="max-width: 800px;" class="items-center grid grid-cols-2 gap-8 mx-auto text-gray-500 sm:gap-12 sm:grid-cols-3 lg:grid-cols-5 dark:text-gray-400">
+					<!-- Logo 1 -->
+					<img src="assets/image/iams.png" alt="" style="filter: grayscale(1);" class="flex items-center lg:justify-center">
+					<!-- Logo 2 -->
+					<img src="assets/image/logo_scienceplan.png" style="filter: grayscale(1);" alt="Logo " class=" flex items-center lg:justify-center">
+					<!-- Logo 3 -->
+					<img src="assets/image/royal-canin-kattenvoer.jpg" style="filter: grayscale(1);" alt="Logo " class="flex items-center lg:justify-center">
+					<!-- Logo 4 -->
+					<img src="assets/image/felix-kattenvoer.jpg" style="filter: grayscale(1);" alt="Logo " class="flex items-center lg:justify-center">
+					<!-- Logo 5 -->
+					<img src="assets/image/whiskas-kattenvoer.jpg" style="filter: grayscale(1);" alt="Logo " class=" flex items-center lg:justify-center">
+				</div>
+			</div>
+			<!-- container.// -->
+		</section>
+
+
+		<!--  section //end -->
+		<!-- feature section -->
+		<section class="bg-gray-100 py-16 md:mt-10">
+			<div class="flex flex-col lg:flex-row justify-between lg:space-x-20 px-20">
+				<div class="text-center lg:text-left" id="dealInfoContainer">
+					<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Aanbieding van de dag</h2>
+					<p class="text-gray-600 leading-relaxed">
+						Bespaar vandaag! Ontdek onze voordeligste aanbieding en laat je kat genieten van topkwaliteit voeding tegen een scherpe prijs.
+					</p>
+					<!-- Dynamisch gegenereerde deal-informatie zal hier worden toegevoegd -->
+				</div>
+				<div class="mx-auto mt-10 lg:mt-0">
+					<img id="dealImage" alt="Image">
+				</div>
+			</div>
+		</section>
+
+    <section class="bg-white pt-10 pb-10 lg:mb-10">
+			<div class="container max-w-screen-xl mx-auto px-4 text-center ">
+					<div style="" class="">
+			
+					<img src="assets/image/3d-casual-life-cat-lies-on-open-books.png" alt="" class="inline-block">
+					</div>
+			</div>
+			<!-- container.// -->
+		</section>
+
+
+
+		<section class="bg-white py-16 md:mt-10">
+			<div class="">
+				<div class="container mx-auto lg:space-x-20 flex flex-col md:flex-row  justify-center">
+					<!-- Eerste tekstkolom -->
+					<div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+						<h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Waarom via ons bestellen?</h2>
+						<p class="text-gray-600 leading-relaxed mb-4">
+							Wij begrijpen dat kattenvoer niet alleen een aankoop is, maar een investering in de gezondheid en het welzijn van je kat. Daarom hebben we een unieke service die automatisch de beste deals van verschillende websites selecteert.
+						</p>
+						<p class="text-gray-600 leading-relaxed mb-4">
+							In een wereld waar alles al duur genoeg is, streven wij ernaar om kwalitatief hoogstaand kattenvoer toegankelijk te maken zonder dat je te veel betaalt. Jouw portemonnee verdient een pauze, terwijl je kat geniet van heerlijke maaltijden die aansluiten bij zijn natuurlijke behoeften.
+						</p>
+					</div>
+					<!-- Tweede tekstkolom -->
+					<div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+						<h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Waarom kiezen voor kwaliteitsvoer?</h2>
+						<p class="text-gray-600 leading-relaxed mb-4">
+							Katten zijn carnivoren, wat betekent dat hun dieet essentiële mineralen en vitamines vereist voor een gezond leven. Onze zorgvuldig geselecteerde voedingskeuzes voorzien in deze behoeften, zodat jouw kat niet alleen geniet van heerlijke maaltijden, maar ook de voedingsstoffen krijgt die van groot belang zijn voor zijn welzijn.
+						</p>
+						<p class="text-gray-600 leading-relaxed mb-4">
+							Bestel vandaag nog via onze website en geef jouw kat de voeding die hij verdient – een gezonde en smakelijke traktatie die zowel jou als je harige metgezel gelukkig zal maken.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!--  section //end -->
+		<section class="bg-blue-100 py-16">
+			<div class="container max-w-screen-xl mx-auto px-4">
+				<h1 class="font-semibold text-gray-900 text-xl md:text-4xl text-center mb-16">Voor- en nadelen van natvoer en droogvoer</h1>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:mx-20 gap-6 mb-8">
+					<div class="p-12 w-full border-2 border-gray-400 bg-white rounded-3xl">
+						<h4 class="font-semibold text-gray-900 text-lg md:text-2xl mb-6">Natvoer</h4>
+						<ul class="list-disc  text-gray-600">
+							<li>Voegt vocht toe aan het dieet, wat kan helpen bij gehydrateerd blijven.</li>
+							<li>Heerlijke smaken en geuren, wat kieskeurige eters kan aantrekken.</li>
+							<li>Makkelijker te eten voor katten met tandproblemen.</li>
+						</ul>
+						<p class="mt-4 text-gray-600">Nadeel: Natvoer bederft sneller en kan duurder zijn dan droogvoer.</p>
+						<a href="jouw-link-hier" style="display: inline-block;" class="text-center text-lg rounded-xl w-full py-4 mt-6 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+						Bekijk natvoer aanbiedingen
+						</a>
+					</div>
+					<div class="p-12 w-full border-2 border-gray-400 bg-white rounded-3xl">
+						<h4 class="font-semibold text-gray-900 text-lg md:text-2xl mb-6">Droogvoer (Kattenbrokken)</h4>
+						<ul class="list-disc text-gray-600">
+							<li>Handig en gemakkelijk op te slaan, heeft een langere houdbaarheid.</li>
+							<li>Kan bijdragen aan tandheelkundige gezondheid door kauwen te bevorderen.</li>
+							<li>Vaak betaalbaarder dan natvoer.</li>
+						</ul>
+						<p class="mt-4 text-gray-600">Nadeel: Bevat minder vocht, wat kan leiden tot minder gehydrateerde katten.</p>
+						<a href="jouw-link-hier" style="display: inline-block;" class="text-center text-lg rounded-xl w-full py-4 mt-6 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+						Bekijk droogvoer aanbiedingen
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- container.// -->
+		</section>
+
+
+		<section class="bg-white py-16 md:mt-10">
+			<div class="container max-w-screen-xl mx-auto px-4">
+				<!-- Data table -->
+				<table class="w-full border-collapse border border-gray-300">
+					<thead>
+						<tr>
+							<th class="border border-gray-300 p-2">Category</th>
+							<th class="border border-gray-300 p-2">Active</th>
+							<th class="border border-gray-300 p-2">Company</th>
+							<th class="border border-gray-300 p-2">Brand</th>
+							<th class="border border-gray-300 p-2">Product</th>
+							<th class="border border-gray-300 p-2">Price</th>
+							<th class="border border-gray-300 p-2">Sale Price</th>
+							<th class="border border-gray-300 p-2">URL</th>
+						</tr>
+					</thead>
+					<tbody id="dataTableBody"></tbody>
+				</table>
+			</div>
+			<!-- container.// -->
+		</section>
+
+
+    
+		<div id="footer"></div>
+ 
+
+  </body>
 </html>
