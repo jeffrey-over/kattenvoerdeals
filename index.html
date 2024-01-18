@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6PLCMVJ7MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6PLCMVJ7MR');
+</script>
+
+
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,11 +40,11 @@
 			<div class="container max-w-screen-xl mx-auto">
 				<div
 					class="rounded-3xl bg-no-repeat "
-					style="height:60vw;background-position: center; background-image: url('https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+					style="max-height:350px;height:40vw;background-position: center; background-image: url('https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
 					<!-- Flex-container voor tekst -->
 					<div class="container mx-auto flex items-center justify-center flex-col text-center text-white h-full">
 						<h1 class="md:text-6xl font-bold mb-4" style="text-shadow: 2px 5px 55px #fff;">Kattenvoer Aanbiedingen</h1>
-						<p class="md:text-2xl mb-8 text-shadow" style="text-shadow: 1px 1px 50px #fff;">Ontdek dagelijks de prijzen!</p>
+						<p class="md:text-2xl mb-8 text-shadow" style="text-shadow: 1px 1px 50px #fff;">Ontdek dagelijks de beste prijzen!</p>
 					</div>
 				</div>
 			</div>
@@ -83,6 +95,7 @@
 		<!--  section //end -->
 		<!-- feature section -->
 		<section class="bg-gray-100 py-16 md:mt-10">
+      <div class="container max-w-screen-xl mx-auto">
 			<div class="flex flex-col lg:flex-row justify-between lg:space-x-20 px-20">
 				<div class="text-center lg:text-left" id="dealInfoContainer">
 					<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Aanbieding van de dag</h2>
@@ -95,22 +108,14 @@
 					<img id="dealImage" alt="Image">
 				</div>
 			</div>
+    </div>
 		</section>
 
-    <section class="bg-white pt-10 pb-10 lg:mb-10">
-			<div class="container max-w-screen-xl mx-auto px-4 text-center ">
-					<div style="" class="">
-			
-					<img src="assets/image/3d-casual-life-cat-lies-on-open-books.png" alt="" class="inline-block">
-					</div>
-			</div>
-			<!-- container.// -->
-		</section>
 
 
 
 		<section class="bg-white py-16 md:mt-10">
-			<div class="">
+			<div class="max-w-screen-xl mx-auto">
 				<div class="container mx-auto lg:space-x-20 flex flex-col md:flex-row  justify-center">
 					<!-- Eerste tekstkolom -->
 					<div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
@@ -136,6 +141,17 @@
 			</div>
 		</section>
 
+
+
+    <section class="bg-white pt-10 pb-10 lg:mb-10">
+			<div class="container max-w-screen-xl mx-auto px-4 text-center ">
+					<div style="" class="">
+			
+					<img src="assets/image/3d-casual-life-cat-lies-on-open-books.png" alt="" class="inline-block">
+					</div>
+			</div>
+			<!-- container.// -->
+		</section>
 
 		<!--  section //end -->
 		<section class="bg-blue-100 py-16">
@@ -171,10 +187,10 @@
 			<!-- container.// -->
 		</section>
 
-
+<!--
 		<section class="bg-white py-16 md:mt-10">
 			<div class="container max-w-screen-xl mx-auto px-4">
-				<!-- Data table -->
+			
 				<table class="w-full border-collapse border border-gray-300">
 					<thead>
 						<tr>
@@ -191,10 +207,12 @@
 					<tbody id="dataTableBody"></tbody>
 				</table>
 			</div>
-			<!-- container.// -->
+		
 		</section>
 
 
+
+  -->
     
 		<div id="footer"></div>
  
