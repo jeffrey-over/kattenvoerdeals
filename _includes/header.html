@@ -1,11 +1,11 @@
- <section class="bg-white py-10">
+<section class="bg-white py-10">
 
     <div class="container max-w-screen-xl mx-auto">
 
         <nav class="flex-wrap lg:flex justify-between items-center px-4" x-data="{navbarOpen:false}">
             <div class="flex items-center lg:mb-0">
                 <div class="flex flex-wrap items-center">
-                  <img src="assets/image/3dlogo.png" alt="Kattenvoerdeals.nl" style="margin-right: 10px;" class="h-16">
+                  <a href="https://www.kattenvoerdeals.nl"><img src="{{ site.baseurl }}/assets/image/3dlogo.png" alt="Kattenvoerdeals.nl" style="margin-right: 10px;" class="h-16"></a>
                 <!--  <h5 class="font-light">kattenvoerdeals.nl</h5>-->
                 </div>
                 <button class="lg:hidden w-10 h-10 ml-auto flex items-center justify-center border border-blue-500 text-blue-500 rounded-md" @click="navbarOpen = !navbarOpen">
@@ -15,7 +15,7 @@
 
             <ul class="lg:flex flex-col lg:flex-row lg:items-center justify-end lg:space-x-8 xl:space-x-14" :class="{'hidden':!navbarOpen,'flex':navbarOpen}">
                 <li class="font-semibold text-gray-900 hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                    <a href="#">Home</a>
+                    <a href="https://www.kattenvoerdeals.nl">Home</a>
                 </li>
                 <li class="font-semibold text-gray-900 hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
                     <a href="#">Science Plan aanbiedingen</a>

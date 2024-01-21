@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="container max-w-screen-xl mx-auto px-4 mt-10">
+    <article>
+        <header>
+            <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
+            <p class="text-gray-600">{{ page.date | date: "%B %-d, %Y" }}</p>
+            <img src="{{ page.image }}" alt="{{ page.title }}" class="my-8 w-full object-cover h-96">
+        </header>
+
+        <div class="prose max-w-none">
+            {{ content }}
+        </div>
+    </article>
+</div>
