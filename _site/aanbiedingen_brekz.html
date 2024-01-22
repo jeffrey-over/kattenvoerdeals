@@ -117,7 +117,8 @@
 			// Functie om de productfeed op te halen en weer te geven
 			async function fetchAndDisplayProductFeed() {
 				try {
-					const response = await fetch(productFeedUrl);
+					const response = await fetch(productFeedUrl, { mode: 'no-cors' });
+
 					const { products } = await response.json();
 	
 					// Vervang deze logica door de gewenste weergave
