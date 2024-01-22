@@ -2,7 +2,7 @@
 // Voeg hier je verwijzingen naar andere JavaScript-bestanden toe
 // bijvoorbeeld:
 
-//import './data.js';
+import './data.js';
 // import './footer.js';
 
 // Voeg ook je eigen JavaScript-functionaliteit hier toe, indien nodig
