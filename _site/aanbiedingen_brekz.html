@@ -115,33 +115,38 @@
 			const productFeedUrl = "https://pf.tradetracker.net/?aid=466154&encoding=utf-8&type=json&fid=1161548&productFeedCategoryHash=d95601321dac08f86945d2eedd900460&categoryType=2&additionalType=2";
 	
 			// Functie om de productfeed op te halen en weer te geven
-			async function fetchAndDisplayProductFeed() {
-				try {
-					const response = await fetch(productFeedUrl);
+			// Functie om de productfeed op te halen en weer te geven
+async function fetchAndDisplayProductFeed() {
+    try {
+        const response = await fetch(productFeedUrl);
+        const rawData = await response.text();
 
-					const { products } = await response.json();
-	
-					// Vervang deze logica door de gewenste weergave
-					const productFeedContainer = document.getElementById("productFeed");
-					products.forEach(product => {
-						const productElement = document.createElement("div");
-						productElement.className = "bg-white p-6 rounded-lg shadow-md";
-						productElement.innerHTML = `
-							<img src="${product.images[0]}" alt="${product.name}" class="mb-4">
-							<h2 class="text-xl font-semibold">${product.name}</h2>
-							<p class="text-gray-600 mb-4">${product.description}</p>
-							<p class="text-gray-700 font-bold mb-2">Prijs: €${product.price.amount}</p>
-							<a href="${product.URL}" target="_blank" class="text-blue-500 hover:underline">Bekijk product</a>
-						`;
-						productFeedContainer.appendChild(productElement);
-					});
-				} catch (error) {
-					console.error("Error fetching or displaying product feed:", error);
-				}
-			}
-	
-			// Roep de functie aan om de productfeed weer te geven
-			fetchAndDisplayProductFeed();
+        // Log de ruwe gegevens
+        console.log("Raw data:", rawData);
+
+        // Probeer de gegevens om te zetten naar JSON
+        const data = JSON.parse(rawData);
+
+        // Vervang deze logica door de gewenste weergave
+        const productFeedContainer = document.getElementById("productFeed");
+        data.forEach(product => {
+            const productElement = document.createElement("div");
+            productElement.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Price: ${product.price}</p>
+                <p>Description: ${product.description}</p>
+                <hr>
+            `;
+            productFeedContainer.appendChild(productElement);
+        });
+    } catch (error) {
+        console.error("Error fetching or displaying product feed:", error);
+    }
+}
+
+// Roep de functie aan om de productfeed weer te geven
+fetchAndDisplayProductFeed();
+
 		</script>
         
          <footer class="bg-white py-16">
