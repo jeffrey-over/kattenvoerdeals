@@ -1,0 +1,73 @@
+---
+layout: default
+---
+
+
+   
+
+		<section class="bg-white">
+			<div class="container max-w-screen-xl mx-auto">
+				<div
+					class="rounded-3xl bg-no-repeat "
+					style="max-height:350px;height:40vw;background-position: center; background-image: url('https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+					<!-- Flex-container voor tekst -->
+					<div class="container mx-auto flex items-center justify-center flex-col text-center text-white h-full">
+						<h1 class="md:text-6xl font-bold mb-4" style="text-shadow: 2px 5px 55px #fff;">Kattenvoer Aanbiedingen</h1>
+						<p class="md:text-2xl mb-8 text-shadow" style="text-shadow: 1px 1px 50px #fff;">Ontdek dagelijks de beste prijzen!</p>
+					</div>
+				</div>
+			</div>
+			<!-- container.// -->
+		</section>
+
+
+
+
+		<section class="bg-white py-16 md:mt-10">
+			<div class="container max-w-screen-xl mx-auto px-4">
+			
+				<div id="productFeed" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8"></div>
+
+
+			</div>
+		
+		</section>
+
+
+
+
+
+
+
+		<script>
+			// Vervang de onderstaande URL door de URL van de productfeed
+			const productFeedUrl = "https://pf.tradetracker.net/?aid=466154&encoding=utf-8&type=json&fid=1161548&productFeedCategoryHash=d95601321dac08f86945d2eedd900460&categoryType=2&additionalType=2";
+	
+			// Functie om de productfeed op te halen en weer te geven
+			async function fetchAndDisplayProductFeed() {
+				try {
+					const response = await fetch(productFeedUrl);
+					const { products } = await response.json();
+	
+					// Vervang deze logica door de gewenste weergave
+					const productFeedContainer = document.getElementById("productFeed");
+					products.forEach(product => {
+						const productElement = document.createElement("div");
+						productElement.className = "bg-white p-6 rounded-lg shadow-md";
+						productElement.innerHTML = `
+							<img src="${product.images[0]}" alt="${product.name}" class="mb-4">
+							<h2 class="text-xl font-semibold">${product.name}</h2>
+							<p class="text-gray-600 mb-4">${product.description}</p>
+							<p class="text-gray-700 font-bold mb-2">Prijs: €${product.price.amount}</p>
+							<a href="${product.URL}" target="_blank" class="text-blue-500 hover:underline">Bekijk product</a>
+						`;
+						productFeedContainer.appendChild(productElement);
+					});
+				} catch (error) {
+					console.error("Error fetching or displaying product feed:", error);
+				}
+			}
+	
+			// Roep de functie aan om de productfeed weer te geven
+			fetchAndDisplayProductFeed();
+		</script>
