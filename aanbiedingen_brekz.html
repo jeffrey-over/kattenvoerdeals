@@ -46,7 +46,7 @@ layout: default
 			// Functie om de productfeed op te halen en weer te geven
 			async function fetchAndDisplayProductFeed() {
 				try {
-					const response = await fetch(productFeedUrl, { mode: 'no-cors' });
+					const response = await fetch(productFeedUrl);
 
 					const { products } = await response.json();
 	
