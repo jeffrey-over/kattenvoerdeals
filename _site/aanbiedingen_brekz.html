@@ -120,6 +120,11 @@
     padding: 16px 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+@media screen and (max-width: 767px) {
+    #dataTable td:nth-child(1), #dataTable td:nth-child(3), #dataTable td:nth-child(5) {
+        display: none;
+    }
+}
 
 </style>
 
@@ -149,7 +154,7 @@
 <p class="text-gray-600 leading-relaxed mb-4">Op deze pagina vind je een verzameling zorgvuldig samengestelde kattenvoer aanbiedingen, rechtstreeks van de Brekz website. Verwen je harige vriend met hoogwaardig kattenvoer tegen gereduceerde prijzen. Duik in ons assortiment en ontdek exclusieve deals voor jouw geliefde kat.</p>
 
 <div class="py-24">
-			<table id="dataTable" class="display nowrap">
+			<table id="dataTable" class="display ">
 				<thead>
 					<tr class="bg-gray-200 sm:py-16">
 						<td class=""></td>
@@ -318,13 +323,8 @@ fetchAndDisplayCatFoodDeals().then(() => {
                 ordering: true,
                 info: true,
                 responsive: true,
-                
-        columnDefs: [
-            {
-                targets: [0, 2,4], // Specificeer hier de indexen van de kolommen die je wilt verbergen
-                visible: false
-            }
-        ],
+                autoWidth: true,
+              
                 createdRow: function (row, data, dataIndex) {
             // Add more padding to td elements
             $('td', row).css('padding', '16px');
