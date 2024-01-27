@@ -126,6 +126,9 @@
     }
 }
 
+.clickable-column:hover {
+    cursor: pointer;
+}
 </style>
 
 		<section class="bg-white">
@@ -258,7 +261,7 @@ async function fetchAndDisplayCatFoodDeals() {
 				productElement.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
 				productElement.innerHTML = `
 					<td class="sm:px-6 sm:py-4"><img class="rounded-full object-fit" style="width:70px;height:70px;" src="${product.properties.thumbnailURL}"></td>
-					<td data-th="Small" class="sm:px-6 sm:py-4 text-gray-900 whitespace-nowrap dark:text-white" style="white-space: normal;" onclick="window.open('${product.URL}', '_blank')">${product.name}<br /><span class="font-light text-gray-400">${product.properties.deliveryTime} - ${product.properties.extraInfo} - € ${product.properties.deliveryCosts} verzendkosten</span></td>
+					<td data-th="Small" class="clickable-column sm:px-6 sm:py-4 text-gray-900 whitespace-nowrap dark:text-white" style="white-space: normal;" onclick="window.open('${product.URL}', '_blank')">${product.name}<br /><span class="font-light text-gray-400">${product.properties.deliveryTime} - ${product.properties.extraInfo} - € ${product.properties.deliveryCosts} verzendkosten</span></td>
 					<td data-th="Regular" class="sm:px-6 sm:py-4">${product.properties.brand.join(', ')}</td>
 					<td data-th="Regular" class="sm:px-6 sm:py-4"><s>€ ${product.properties.fromPrice}</s> € ${product.price.amount}</td>
 					<td data-th="Regular" class="sm:px-6 sm:py-4">${salesPercentage.toFixed(2)}%</td>
