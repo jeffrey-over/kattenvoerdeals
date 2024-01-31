@@ -136,7 +136,7 @@
 					style="max-height:350px;height:40vw;background-position: center;background-size: cover; background-image: url('https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
 					<!-- Flex-container voor tekst -->
 					<div class="container mx-auto flex items-center justify-center flex-col text-center text-white h-full">
-						<h1 class="md:text-6xl font-bold mb-4" style="text-shadow: 2px 5px 55px #fff;">Iams Aanbiedingen</h1>
+						<h1 class="md:text-6xl font-bold mb-4" style="text-shadow: 2px 5px 55px #fff;">Gourmet Aanbiedingen</h1>
 						<p class="md:text-2xl mb-8 text-shadow" style="text-shadow: 1px 1px 50px #000;">Minimaal 10% korting!</p>
 					</div>
 				</div>
@@ -151,8 +151,8 @@
 
 <div class="container max-w-screen-xl mx-auto">
 
-<h1 class="text-3xl font-bold mb-8">Verwen Jouw Kat met Voedzame Delicatessen van Iams - Kwaliteit voor een Stralend Leven</h1>
-<p class="text-gray-600 leading-relaxed mb-4">Laat jouw kat genieten van hoogwaardige voeding met Iams. Ontdek een assortiment voedzame maaltijden die zijn samengesteld met de beste ingrediënten om de gezondheid en vitaliteit van jouw kat te ondersteunen. Iams staat voor kwaliteit en smaak, en biedt voeding die de natuurlijke behoeften van jouw kat respecteert.</p>
+<h1 class="text-3xl font-bold mb-8">Ontdek De Beste Gourmet Aanbiedingen - Speciale Kortingen Op Kattenvoer</h1>
+<p class="text-gray-600 leading-relaxed mb-4">Verwen je kat met heerlijk Gourmet kattenvoer tegen de beste prijzen! Hier vind je exclusieve aanbiedingen en speciale kortingen op een scala van Gourmet producten. Kies uit een breed assortiment en geef je kat de smaak die ze verdienen.</p>
 
 <div class="py-24">
     <div id="aboveTableText" class="font-bold"></div>
@@ -171,141 +171,144 @@
      
 			</table>
         </div>
-<p class="text-gray-600 leading-relaxed mb-4">Breng het beste naar de voerbak van jouw kat met Iams. Of je nu kiest voor overheerlijk natvoer of knapperige kattenbrokken, je geeft jouw kat de voeding die het verdient. Ontdek de verscheidenheid aan smaken en voedingsformules die Iams te bieden heeft en geef jouw kat een leven vol gezondheid en tevredenheid.</p>
+<p class="text-gray-600 leading-relaxed mb-4">Laat je kat genieten van de fijnste smaken van Gourmet kattenvoer, terwijl je geniet van geweldige besparingen. Mis deze kans niet om hoogwaardige voeding te krijgen tegen gereduceerde prijzen. Bekijk en bestel vandaag nog om je pluizige vriend te verwennen met de beste Gourmet maaltijden!</p>
 
 		</div>
 		</section>
 
 
 
-<script>
-   // Functie om de producten op te halen, te filteren en weer te geven voor een specifieke winkel
-async function fetchAndDisplayDealsForStore(feedUrl, storeName) {
-    try {
-        const url = 'https://corsproxy.io/?' + encodeURIComponent(feedUrl);
-        const productFeedUrl = url;
 
-        // Haal de productfeed op
-        const response = await fetch(productFeedUrl);
-        const rawData = await response.text();
 
-        // Log de ruwe gegevens
-        console.log(`Raw data for ${storeName}:`, rawData);
 
-        // Probeer de gegevens om te zetten naar JSON
-        const parsedData = JSON.parse(rawData);
-
-        // Controleer of de products-array aanwezig is
-        if (parsedData && Array.isArray(parsedData.products)) {
-            // Haal de container op waarin de resultaten worden weergegeven
-            const productFeedContainer = document.getElementById("productFeed");
-
-            // Controleer of er kattenvoer deals zijn gevonden
-            if (parsedData.products.length === 0) {
-                return;
-            }
-
-            // Filter en sorteer aanbiedingen op basis van salespercentage en specifieke winkelattributen
-            let discountedCatFood = parsedData.products
-                .filter(product => {
-                    const salesPercentage = ((product.properties.fromPrice - product.price.amount) / product.properties.fromPrice) * 100;
-                    // Pas hier de drempelwaarde aan (bijv. 10%) op basis van je vereisten
-                    return (
-                        salesPercentage > 10 &&
-                        product.categories && product.categories.Kat === 'Kat' &&
-                        ((product.properties.brand && product.properties.brand.includes("iams")) ||
-                        (product.properties.brand && product.properties.brand.includes("Iams"))) &&
-                        product.properties.subcategories && product.properties.subcategories.includes("Benodigdheden voor katten Kattenvoer") 
-                    );
-                })
-                .sort((a, b) => {
-                    const percentageA = ((a.properties.fromPrice - a.price.amount) / a.properties.fromPrice) * 100;
-                    const percentageB = ((b.properties.fromPrice - b.price.amount) / b.properties.fromPrice) * 100;
-                    return percentageB - percentageA;
-                });
-
-                var showOldPrice = 1;
-            // Toon een tekst boven de tabel als er geen aanbiedingen zijn
-            if (discountedCatFood.length === 0) {
-                document.getElementById("aboveTableText").innerText = "Helaas zijn er op dit moment geen kortingsaanbiedingen voor kattenvoer beschikbaar via onze partners. De aanbiedingen worden regelmatig vernieuwd, dus kom binnenkort terug voor mogelijke nieuwe deals!";
-
-                showOldPrice = 0;
-              
-                // Voer een tweede filter uit zonder de salesPercentage > 10 voorwaarde
-                discountedCatFood = parsedData.products
-                    .filter(product => {
-                        return (
-                            product.categories && product.categories.Kat === 'Kat' &&
-                            ((product.properties.brand && product.properties.brand.includes("iams")) ||
-                            (product.properties.brand && product.properties.brand.includes("Iams"))) &&
-                            product.properties.subcategories && product.properties.subcategories.includes("Benodigdheden voor katten Kattenvoer") 
-                        );
-                    })
-                    .sort((a, b) => {
-                        const percentageA = ((a.properties.fromPrice - a.price.amount) / a.properties.fromPrice) * 100;
-                        const percentageB = ((b.properties.fromPrice - b.price.amount) / b.properties.fromPrice) * 100;
-                        return percentageB - percentageA;
-                    });
-
+        <script>
+            // Functie om de producten op te halen, te filteren en weer te geven voor een specifieke winkel
+         async function fetchAndDisplayDealsForStore(feedUrl, storeName) {
+             try {
+                 const url = 'https://corsproxy.io/?' + encodeURIComponent(feedUrl);
+                 const productFeedUrl = url;
+         
+                 // Haal de productfeed op
+                 const response = await fetch(productFeedUrl);
+                 const rawData = await response.text();
+         
+                 // Log de ruwe gegevens
+                 console.log(`Raw data for ${storeName}:`, rawData);
+         
+                 // Probeer de gegevens om te zetten naar JSON
+                 const parsedData = JSON.parse(rawData);
+         
+                 // Controleer of de products-array aanwezig is
+                 if (parsedData && Array.isArray(parsedData.products)) {
+                     // Haal de container op waarin de resultaten worden weergegeven
+                     const productFeedContainer = document.getElementById("productFeed");
+         
+                     // Controleer of er kattenvoer deals zijn gevonden
+                     if (parsedData.products.length === 0) {
+                         return;
+                     }
+         
+                     // Filter en sorteer aanbiedingen op basis van salespercentage en specifieke winkelattributen
+                     let discountedCatFood = parsedData.products
+                         .filter(product => {
+                             const salesPercentage = ((product.properties.fromPrice - product.price.amount) / product.properties.fromPrice) * 100;
+                             // Pas hier de drempelwaarde aan (bijv. 10%) op basis van je vereisten
+                             return (
+                                 salesPercentage > 10 &&
+                                 product.categories && product.categories.Kat === 'Kat' &&
+                                 ((product.properties.brand && product.properties.brand.includes("Gourmet")) ||
+                                (product.properties.brand && product.properties.brand.includes("gour"))) &&
+                                 product.properties.subcategories && product.properties.subcategories.includes("Benodigdheden voor katten Kattenvoer") 
+                             );
+                         })
+                         .sort((a, b) => {
+                             const percentageA = ((a.properties.fromPrice - a.price.amount) / a.properties.fromPrice) * 100;
+                             const percentageB = ((b.properties.fromPrice - b.price.amount) / b.properties.fromPrice) * 100;
+                             return percentageB - percentageA;
+                         });
+         
+                         var showOldPrice = 1;
+                     // Toon een tekst boven de tabel als er geen aanbiedingen zijn
+                     if (discountedCatFood.length === 0) {
+                         document.getElementById("aboveTableText").innerText = "Helaas zijn er op dit moment geen kortingsaanbiedingen voor kattenvoer beschikbaar via onze partners. De aanbiedingen worden regelmatig vernieuwd, dus kom binnenkort terug voor mogelijke nieuwe deals!";
+         
+                         showOldPrice = 0;
+                       
+                         // Voer een tweede filter uit zonder de salesPercentage > 10 voorwaarde
+                         discountedCatFood = parsedData.products
+                             .filter(product => {
+                                 return (
+                                     product.categories && product.categories.Kat === 'Kat' &&
+                                     ((product.properties.brand && product.properties.brand.includes("Gourmet")) ||
+                                (product.properties.brand && product.properties.brand.includes("gour"))) &&
+                                     product.properties.subcategories && product.properties.subcategories.includes("Benodigdheden voor katten Kattenvoer") 
+                                 );
+                             })
+                             .sort((a, b) => {
+                                 const percentageA = ((a.properties.fromPrice - a.price.amount) / a.properties.fromPrice) * 100;
+                                 const percentageB = ((b.properties.fromPrice - b.price.amount) / b.properties.fromPrice) * 100;
+                                 return percentageB - percentageA;
+                             });
+         
+                      }
+         
+                     // Bouw de tabel met de resultaten
+                     discountedCatFood.forEach(product => {
+                         const salesPercentage = ((product.properties.fromPrice - product.price.amount) / product.properties.fromPrice) * 100;
+                         const productElement = document.createElement('tr');
+                         productElement.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
+                         productElement.innerHTML = `
+                             <td class="sm:px-6 sm:py-4"><img class="rounded-full object-fit" style="width:70px;height:70px;" src="${product.properties.thumbnailURL}"></td>
+                             <td data-th="Small" class="clickable-column sm:px-6 sm:py-4 text-gray-900 whitespace-nowrap dark:text-white" style="white-space: normal;" onclick="window.open('${product.URL}', '_blank')">${product.name}<br /><span class="font-light text-gray-400">${product.properties.deliveryTime} - ${product.properties.extraInfo} - € ${product.properties.deliveryCosts} verzendkosten</span></td>
+                             <td data-th="Regular" class="sm:px-6 sm:py-4"> ${showOldPrice === 1 ? `<s>€ ${product.properties.fromPrice}</s> ` : ''}
+                                  € ${product.price.amount}</td>
+                             <td data-th="Regular" class="sm:px-6 sm:py-4">${salesPercentage.toFixed(2)}%</td>
+                             <td data-th="Regular" class="sm:px-6 sm:py-4">${storeName}</td>
+                         `;
+                         productFeedContainer.appendChild(productElement);
+                     });
+         
+                     // Initialiseer de DataTable voor deze productfeed met Nederlandse taalbestanden
+                   // Initialiseer de DataTable voor deze productfeed met Nederlandse taalbestanden
+         fetch('https://cdn.datatables.net/plug-ins/1.13.7/i18n/nl-NL.json')
+             .then(response => response.json())
+             .then(languageData => {
+                 // Initialize the DataTable with the fetched language data
+                 const dataTable = $('#dataTable').DataTable({
+                     language: languageData,
+                     paging: true,
+                     lengthChange: false,
+                     searching: true,
+                     ordering: true,
+                     info: true,
+                     responsive: true,
+                     autoWidth: true,
+                     createdRow: function (row, data, dataIndex) {
+                         // Add more padding to td elements
+                         $('td', row).css('padding', '16px');
+                         $(row).css('margin-bottom', '16px');
+                         if ($(window).width() < 600) {
+                             $('td', row).css('font-size', '12px'); // Verander de fontsize op mobiel
+                             $('td', row).css('padding', '5px'); // Verander de padding op mobiel
+                         }
+                     },
+                     order: [[4, 'desc']]  // Sorteer op de 5e kolom (index 4) in aflopende volgorde
+                 });
+             });
+         
+                 } else {
+                     // Toon een bericht als de 'products'-eigenschap ontbreekt of ongeldig is
+                     document.getElementById("noRecordsMessage").innerText = `Invalid or missing 'products' property in the data for ${storeName}.`;
+                 }
+             } catch (error) {
+                 // Toon een foutmelding als er een fout optreedt bij het ophalen of weergeven van de productfeed
+                 console.error(`Error fetching or displaying ${storeName} deals:`, error);
              }
-
-            // Bouw de tabel met de resultaten
-            discountedCatFood.forEach(product => {
-                const salesPercentage = ((product.properties.fromPrice - product.price.amount) / product.properties.fromPrice) * 100;
-                const productElement = document.createElement('tr');
-                productElement.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
-                productElement.innerHTML = `
-                    <td class="sm:px-6 sm:py-4"><img class="rounded-full object-fit" style="width:70px;height:70px;" src="${product.properties.thumbnailURL}"></td>
-                    <td data-th="Small" class="clickable-column sm:px-6 sm:py-4 text-gray-900 whitespace-nowrap dark:text-white" style="white-space: normal;" onclick="window.open('${product.URL}', '_blank')">${product.name}<br /><span class="font-light text-gray-400">${product.properties.deliveryTime} - ${product.properties.extraInfo} - € ${product.properties.deliveryCosts} verzendkosten</span></td>
-                    <td data-th="Regular" class="sm:px-6 sm:py-4"> ${showOldPrice === 1 ? `<s>€ ${product.properties.fromPrice}</s> ` : ''}
-                         € ${product.price.amount}</td>
-                    <td data-th="Regular" class="sm:px-6 sm:py-4">${salesPercentage.toFixed(2)}%</td>
-                    <td data-th="Regular" class="sm:px-6 sm:py-4">${storeName}</td>
-                `;
-                productFeedContainer.appendChild(productElement);
-            });
-
-            // Initialiseer de DataTable voor deze productfeed met Nederlandse taalbestanden
-          // Initialiseer de DataTable voor deze productfeed met Nederlandse taalbestanden
-fetch('https://cdn.datatables.net/plug-ins/1.13.7/i18n/nl-NL.json')
-    .then(response => response.json())
-    .then(languageData => {
-        // Initialize the DataTable with the fetched language data
-        const dataTable = $('#dataTable').DataTable({
-            language: languageData,
-            paging: true,
-            lengthChange: false,
-            searching: true,
-            ordering: true,
-            info: true,
-            responsive: true,
-            autoWidth: true,
-            createdRow: function (row, data, dataIndex) {
-                // Add more padding to td elements
-                $('td', row).css('padding', '16px');
-                $(row).css('margin-bottom', '16px');
-                if ($(window).width() < 600) {
-                    $('td', row).css('font-size', '12px'); // Verander de fontsize op mobiel
-                    $('td', row).css('padding', '5px'); // Verander de padding op mobiel
-                }
-            },
-            order: [[4, 'desc']]  // Sorteer op de 5e kolom (index 4) in aflopende volgorde
-        });
-    });
-
-        } else {
-            // Toon een bericht als de 'products'-eigenschap ontbreekt of ongeldig is
-            document.getElementById("noRecordsMessage").innerText = `Invalid or missing 'products' property in the data for ${storeName}.`;
-        }
-    } catch (error) {
-        // Toon een foutmelding als er een fout optreedt bij het ophalen of weergeven van de productfeed
-        console.error(`Error fetching or displaying ${storeName} deals:`, error);
-    }
-}
-
-// Roep de functie aan om de kattenvoer-deals weer te geven voor de huidige productfeed (Brekz)
-fetchAndDisplayDealsForStore('https://pf.tradetracker.net/?aid=466154&encoding=utf-8&type=json&fid=1161548&productFeedCategoryHash=d95601321dac08f86945d2eedd900460&categoryType=2&additionalType=2', 'Brekz');
-</script>
+         }
+         
+         // Roep de functie aan om de kattenvoer-deals weer te geven voor de huidige productfeed (Brekz)
+         fetchAndDisplayDealsForStore('https://pf.tradetracker.net/?aid=466154&encoding=utf-8&type=json&fid=1161548&productFeedCategoryHash=d95601321dac08f86945d2eedd900460&categoryType=2&additionalType=2', 'Brekz');
+         </script>
         
          <footer class="bg-white py-16">
 
