@@ -36,7 +36,7 @@ layout: default
 </style>
 
 		<section class="bg-white">
-			<div class="container max-w-screen-xxl mx-auto">
+			<div class="container max-w-screen-xl mx-auto">
 				<div
 					class="rounded-3xl bg-no-repeat "
 					style="max-height:350px;height:40vw;background-position: center;background-size: cover; background-image: url('https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
@@ -55,13 +55,13 @@ layout: default
 
 		<section class="bg-white py-16 md:mt-10">
 
-<div class="container max-w-screen-xxl mx-auto">
+<div class="container max-w-screen-xl mx-auto">
 
 <h1 class="text-3xl font-bold mb-8">Kattenvoer Aanbiedingen op Brekz.nl</h1>
 <p class="text-gray-600 leading-relaxed mb-4">Op deze pagina vind je een verzameling zorgvuldig samengestelde kattenvoer aanbiedingen, rechtstreeks van de Brekz website. Verwen je harige vriend met hoogwaardig kattenvoer tegen gereduceerde prijzen. Duik in ons assortiment en ontdek exclusieve deals voor jouw geliefde kat.</p>
 
 <div class="py-24">
-			<table id="dataTable" class="display ">
+			<table id="dataTable" class="display" style="font-size: 14px;">
 				<thead>
 					<tr class="bg-gray-200 sm:py-16">
 						<td class=""></td>
@@ -80,10 +80,6 @@ layout: default
 
 		</div>
 		</section>
-
-
-<!-- ... Your HTML content ... -->
-<div id="noRecordsMessage" class="text-red-500 font-bold"></div>
 
 
 
@@ -115,7 +111,6 @@ async function fetchAndDisplayCatFoodDeals() {
 
             // Controleer of er kattenvoer deals zijn gevonden
             if (catFoodDeals.length === 0) {
-                document.getElementById("noRecordsMessage").innerText = "No discounted cat food deals found.";
                 return;
             }
 
