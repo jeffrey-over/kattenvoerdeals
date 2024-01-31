@@ -186,124 +186,50 @@ Ben je op zoek naar hoogwaardig natvoer voor jouw kat tegen aantrekkelijke prijz
 
 
 
-<script>
-   // Functie om de producten op te halen, te filteren en weer te geven voor een specifieke winkel
-async function fetchAndDisplayDealsForStore(feedUrl, storeName) {
-    try {
-        const url = 'https://corsproxy.io/?' + encodeURIComponent(feedUrl);
-        const productFeedUrl = url;
+<script>// Functie om CSV-gegevens van een URL te halen
+  // Functie om CSV-gegevens van een URL te halen
+async function fetchDataFromCSV(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
 
-        // Haal de productfeed op
-        const response = await fetch(productFeedUrl);
-        const rawData = await response.text();
-
-        // Log de ruwe gegevens
-        console.log(`Raw data for ${storeName}:`, rawData);
-
-        // Probeer de gegevens om te zetten naar JSON
-        const parsedData = JSON.parse(rawData);
-
-        // Controleer of de products-array aanwezig is
-        if (parsedData && Array.isArray(parsedData.products)) {
-            // Haal de container op waarin de resultaten worden weergegeven
-            const productFeedContainer = document.getElementById("productFeed");
-
-            // Controleer of er kattenvoer deals zijn gevonden
-            if (parsedData.products.length === 0) {
-                document.getElementById("noRecordsMessage").innerText = `No discounted cat food deals found for ${storeName}.`;
-                return;
-            }
-
-            // Filter en sorteer aanbiedingen op basis van salespercentage en specifieke winkelattributen
-            const discountedCatFood = parsedData.products
-                 .filter(product => {
-                        const salesPercentage = ((product.properties.fromPrice - product.price.amount) / product.properties.fromPrice) * 100;
-                        const productName = product.name.toLowerCase(); // Converteer de productnaam naar kleine letters voor case-insensitive vergelijking
-                        const containsNatvoer = productName.includes('natvoer');
-                        const containsNat = productName.includes('nat');
-                        const productDescription = product.description.toLowerCase(); // Converteer de productnaam naar kleine letters voor case-insensitive vergelijking
-                      
-                        const containsC = productName.includes('combipack');
-                        const containsM = productName.includes('multipack');
-                        const containsNatvoer2 = productDescription.includes('natvoer');
-console.log(containsNatvoer2)
-                        // Pas hier de drempelwaarde aan (bijv. 10%) op basis van je vereisten
-                        return (
-                            salesPercentage > 10 &&
-                            product.categories && product.categories.Kat === 'Kat' &&
-                          ( containsNatvoer || containsNat || containsC || containsM ||
-                            containsNatvoer2) &&
-                            product.properties.subcategories && product.properties.subcategories.includes("Benodigdheden voor katten Kattenvoer") 
-                        );
-                    })
-
-                .sort((a, b) => {
-                    const percentageA = ((a.properties.fromPrice - a.price.amount) / a.properties.fromPrice) * 100;
-                    const percentageB = ((b.properties.fromPrice - b.price.amount) / b.properties.fromPrice) * 100;
-                    return percentageB - percentageA;
-                });
-
-            if (discountedCatFood.length === 0) {
-                document.getElementById("noRecordsMessage").innerText = "No discounted cat food deals found.";
-                return;
-            }
-
-            // Bouw de tabel met de resultaten
-            discountedCatFood.forEach(product => {
-                const salesPercentage = ((product.properties.fromPrice - product.price.amount) / product.properties.fromPrice) * 100;
-                const productElement = document.createElement('tr');
-                productElement.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600";
-                productElement.innerHTML = `
-                    <td class="sm:px-6 sm:py-4"><img class="rounded-full object-fit" style="width:70px;height:70px;" src="${product.properties.thumbnailURL}"></td>
-                    <td data-th="Small" class="clickable-column sm:px-6 sm:py-4 text-gray-900 whitespace-nowrap dark:text-white" style="white-space: normal;" onclick="window.open('${product.URL}', '_blank')">${product.name}<br /><span class="font-light text-gray-400">${product.properties.deliveryTime} - ${product.properties.extraInfo} - € ${product.properties.deliveryCosts} verzendkosten</span></td>
-                    <td data-th="Regular" class="sm:px-6 sm:py-4"><s>€ ${product.properties.fromPrice}</s> € ${product.price.amount}</td>
-                    <td data-th="Regular" class="sm:px-6 sm:py-4">${salesPercentage.toFixed(2)}%</td>
-                    <td data-th="Regular" class="sm:px-6 sm:py-4">${storeName}</td>
-                `;
-                productFeedContainer.appendChild(productElement);
-            });
-
-            // Initialiseer de DataTable voor deze productfeed met Nederlandse taalbestanden
-          // Initialiseer de DataTable voor deze productfeed met Nederlandse taalbestanden
-fetch('https://cdn.datatables.net/plug-ins/1.13.7/i18n/nl-NL.json')
-    .then(response => response.json())
-    .then(languageData => {
-        // Initialize the DataTable with the fetched language data
-        const dataTable = $('#dataTable').DataTable({
-            language: languageData,
-            paging: true,
-            lengthChange: false,
-            searching: true,
-            ordering: true,
-            info: true,
-            responsive: true,
-            autoWidth: true,
-            createdRow: function (row, data, dataIndex) {
-                // Add more padding to td elements
-                $('td', row).css('padding', '16px');
-                $(row).css('margin-bottom', '16px');
-                if ($(window).width() < 600) {
-                    $('td', row).css('font-size', '12px'); // Verander de fontsize op mobiel
-                    $('td', row).css('padding', '5px'); // Verander de padding op mobiel
-                }
-            },
-            order: [[4, 'desc']]  // Sorteer op de 5e kolom (index 4) in aflopende volgorde
-        });
-    });
-
-        } else {
-            // Toon een bericht als de 'products'-eigenschap ontbreekt of ongeldig is
-            document.getElementById("noRecordsMessage").innerText = `Invalid or missing 'products' property in the data for ${storeName}.`;
-        }
-    } catch (error) {
-        // Toon een foutmelding als er een fout optreedt bij het ophalen of weergeven van de productfeed
-        console.error(`Error fetching or displaying ${storeName} deals:`, error);
-    }
+    return data;
+  } catch (error) {
+    console.error('Fout bij het ophalen van CSV-gegevens:', error.message);
+    throw error;
+  }
 }
 
-// Roep de functie aan om de kattenvoer-deals weer te geven voor de huidige productfeed (Brekz)
-fetchAndDisplayDealsForStore('https://pf.tradetracker.net/?aid=466154&encoding=utf-8&type=json&fid=1161548&productFeedCategoryHash=d95601321dac08f86945d2eedd900460&categoryType=2&additionalType=2', 'Brekz');
-</script>
+// Functie om CSV-gegevens te verwerken
+function processCSVData(csvData) {
+  const rows = csvData.split('\n'); // Split op nieuwe regels
+
+  const headers = rows[0].split(','); // Veronderstel dat de eerste rij de headers bevat
+  const results = [];
+
+  for (let i = 1; i < rows.length; i++) {
+    const currentRow = rows[i].split(',');
+    if (currentRow.length === headers.length) {
+      const rowData = {};
+      for (let j = 0; j < headers.length; j++) {
+        rowData[headers[j]] = currentRow[j];
+      }
+      results.push(rowData);
+    }
+  }
+
+  // Verwerk de resultaten zoals gewenst
+  console.log(results);
+}
+
+// Voorbeeldgebruik
+const csvUrl = 'https://productdata.awin.com/datafeed/download/apikey/01df54278bd2ff79fdd298984121b1b9/language/nl/fid/51111/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,merchant_id,category_name,category_id,aw_image_url,currency,store_price,delivery_cost,merchant_deep_link,language,last_updated,display_price,data_feed_id,brand_name,brand_id,colour,product_short_description,specifications,condition,product_model,model_number,dimensions,keywords,promotional_text,product_type,commission_group,merchant_product_category_path,merchant_product_second_category,merchant_product_third_category,rrp_price,saving,savings_percent,base_price,base_price_amount,base_price_text,product_price_old,delivery_restrictions,delivery_weight,warranty,terms_of_contract,delivery_time,in_stock,stock_quantity,valid_from,valid_to,is_for_sale,web_offer,pre_order,stock_status,size_stock_status,size_stock_amount,merchant_thumb_url,large_image,alternate_image,aw_thumb_url,alternate_image_two,alternate_image_three,alternate_image_four,reviews,average_rating,rating,number_available,custom_1,custom_2,custom_3,custom_4,custom_5,custom_6,custom_7,custom_8,custom_9,ean,isbn,upc,mpn,parent_product_id,product_GTIN,basket_link,Fashion%3Asuitable_for,Fashion%3Acategory,Fashion%3Asize,Fashion%3Amaterial,Fashion%3Apattern,Fashion%3Aswatch/format/csv/delimiter/%2C/compression/gzip/';
+
+fetchDataFromCSV(csvUrl)
+  .then(processCSVData)
+  .catch((error) => console.error('Fout bij het verwerken van CSV-gegevens:', error.message));
+
+    </script>
         
          <footer class="bg-white py-16">
 
