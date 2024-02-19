@@ -15,6 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% if page.title %}{{ page.title }}{% else %}Ontdek de Beste Kattenvoer Aanbiedingen - KattenVoerDeals.nl{% endif %}</title>
 
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tailwind.css">
 <script type="module" src="{{ site.baseurl }}/assets/js/base.js"></script>
 <link rel="icon" type="image/x-icon" href="assets/image/favicon.ico">
@@ -22,7 +23,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> 
-
+<meta name="description" content="{% if page.heading %}{{ page.heading }}{% else %}Ontdek de beste kattenvoer aanbiedingen op KattenvoerDeals.nl! Profiteer van scherpe prijzen en kies uit een breed assortiment hoogwaardig voer voor jouw geliefde kat. Bespaar op topmerken en geef je kat de voeding die ze verdient. Bestel nu en laat je kat genieten van heerlijke maaltijden, terwijl jij bespaart op je budget. Snelle levering en uitstekende service gegarandeerd. Shop vandaag nog!{% endif %}">
+	
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <!-- Your other scripts -->
