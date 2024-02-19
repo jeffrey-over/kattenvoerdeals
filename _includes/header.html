@@ -46,7 +46,7 @@
     padding-bottom: 40px !important;
  ">
                      <!-- Eerste tekstkolom -->
-                     <div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                     <div class="w-full  {% if page.heading_image %}md:w-1/2{% endif %} text-center md:text-left mb-8 md:mb-0">
                          
                         {% if page.heading %}<h2 class="font-serif text-5xl md:text-5xl font-bold text-blue-900 mb-4" style=" margin-bottom: 30px;">{{page.heading}}</h2>{% endif %}
                         {% if page.heading_intro %} <p class="leading-relaxed text-blue-900">{{ page.heading_intro }}</p>{% endif %}
