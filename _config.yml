@@ -1,3 +1,6 @@
 baseurl: ""
+url: "https://www.kattenvoerdeals.nl"
 plugins:
   - jekyll-sitemap
+title: Kattenvoerdeals
+email: jeffrey.overmeer@gmail.com
