@@ -20,7 +20,7 @@ heading_intro: "Nieuw op KattenvoerDeals.nl - Ontdek de purrfecte plek voor katt
                 <div class="p-6">
                     <h2 class="font-bold text-xl mb-3">{{ post.title }}</h2>
                     <p class="text-gray-600">{{ post.intro }}</p>
-                    <a href="{{ post.url }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition ease-in-out duration-500">Lees Meer</a>
+                    <a href="{{ post.url | relative_url }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition ease-in-out duration-500">Lees Meer</a>
                 </div>
             </div>
             {% endfor %}
