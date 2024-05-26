@@ -5,6 +5,8 @@ title: "De Ultieme Gids voor Gezond Kattenvoer: Tips en Topmerken"
 heading_image: "https://www.kattenvoerdeals.nl/assets/image/3d-casual-life-young-man-sitting-in-armchair-with-cat-next-to-him.png"
 heading_intro: "Ontdek onze uitgebreide gids over gezond kattenvoer, boordevol tips, inzichten en aanbevelingen van topmerken."
 heading: "De Ultieme Gids voor Gezond Kattenvoer: Tips en Topmerken"
+categories: blog
+tags: [kattenvoer, aanbiedingen, gezond]
 ---
 
 

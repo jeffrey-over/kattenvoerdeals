@@ -1,22 +1,72 @@
+---
+layout: compress
+---
 <!DOCTYPE html>
 <html lang="en">
    {% include head.html %}
    <body id="body" class="font-body">
     {% include header.html %}
-       
-            {{ content }}
-        
+	<div class="wrapper">
+        {{ content }}
+      </div>
 
-			{% comment %}
-  <!-- Only show related pages on a page when `related: true` -->
-{% endcomment %}
-{% if page.id and page.related %}
-  <div class="wrapper">
-    <h3>Zie ook:</h3>
-    {% include related.html %}
-  </div>
-{% endif %}
-
+	  <div class="container max-w-screen-xl mx-auto px-4 mt-10">
+		<div class="container current-page-tags">
+			<h3 class="text-lg font-bold mb-4">Ontdek meer over: {{ page.tags | join: ', ' }}</h3>
+		  </div>
+	  
+	  <div class="container related-posts mt-8">
+		<h3 class="text-lg font-bold mb-4">Mogelijk ook interessant:</h3>
+		<ul>
+		  {% assign page_tags = page.tags %}
+		  {% assign related_list = "" %}
+	  
+		  <!-- Filteren van berichten -->
+		  {% for post in site.posts %}
+			{% assign common_tags = false %}
+			{% for tag in post.tags %}
+			  {% if page_tags contains tag %}
+				{% assign common_tags = true %}
+				{% break %}
+			  {% endif %}
+			{% endfor %}
+			{% if common_tags %}
+			  {% assign related_list = related_list | append: post.url | append: ',' %}
+			{% endif %}
+		  {% endfor %}
+	  
+		  <!-- Filteren van pagina's -->
+		  {% for page in site.pages %}
+			{% if page.layout == "default" %}
+			  {% assign common_tags = false %}
+			  {% for tag in page.tags %}
+				{% if page_tags contains tag %}
+				  {% assign common_tags = true %}
+				  {% break %}
+				{% endif %}
+			  {% endfor %}
+			  {% if common_tags %}
+				{% assign related_list = related_list | append: page.url | append: ',' %}
+			  {% endif %}
+			{% endif %}
+		  {% endfor %}
+	  
+		  {% assign related_list = related_list | split: ',' | uniq %}
+		  {% for url in related_list limit: 5 %}
+			{% assign related_post = site.posts | where: "url", url | first %}
+			{% if related_post == nil %}
+			  {% assign related_post = site.pages | where: "url", url | first %}
+			{% endif %}
+			<li class="mb-2">
+			  <a href="{{ related_post.url }}" class="text-blue-600 hover:underline">{{ related_post.title }}</a>
+			</li>
+		  {% endfor %}
+		</ul>
+	  </div>
+	</div> 
+				  
+	  
+			
 
          {% include footer.html %}
    

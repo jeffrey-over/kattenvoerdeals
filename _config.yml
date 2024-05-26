@@ -4,7 +4,4 @@ plugins:
   - jekyll-sitemap
 title: Kattenvoerdeals
 email: jeffrey.overmeer@gmail.com
-related_by: tags or categories # Match on categories OR tags
-#related_limit: 4              # Include 4 related pages by default
-related_categories: 1          # Match at least 1 category
-related_tags: 2                # OR at least 2 tags.
+
