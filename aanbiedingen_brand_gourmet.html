@@ -78,20 +78,16 @@ tags: brand, gourmey, kattenvoer
 
 
         <script>
-            // Functie om de producten op te halen, te filteren en weer te geven voor een specifieke winkel
-         async function fetchAndDisplayDealsForStore(feedUrl, storeName) {
+            async function fetchAndDisplayDealsForStore(feedUrl, storeName) {
              try {
                  const url = 'https://corsproxy.io/?' + encodeURIComponent(feedUrl);
                  const productFeedUrl = url;
          
-                 // Haal de productfeed op
                  const response = await fetch(productFeedUrl);
                  const rawData = await response.text();
          
-                 // Log de ruwe gegevens
                  console.log(`Raw data for ${storeName}:`, rawData);
          
-                 // Probeer de gegevens om te zetten naar JSON
                  const parsedData = JSON.parse(rawData);
          
                  // Controleer of de products-array aanwezig is
